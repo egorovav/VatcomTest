@@ -1,0 +1,48 @@
+﻿<Window x:Class="VatcomTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="500" Width="550">
+	<Grid>
+		<StackPanel>
+			<Label Content="Receipts" />
+			<DataGrid ItemsSource="{Binding Receipts}" 
+					  SelectedItem="{Binding SelectedReceipt}"
+					  AutoGenerateColumns="False" 
+					  Margin="5">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Open Date" Binding="{Binding OpenDate}" />
+					<DataGridTextColumn Header="Close Date" Binding="{Binding CloseDate}" />
+					<DataGridTextColumn Header="Shift Number" Binding="{Binding ShiftNumber}" />
+					<DataGridTextColumn Header="Cashier Name" Binding="{Binding CashierName}" />
+					<DataGridTextColumn Header="Cash Register Id" Binding="{Binding CashRegisterId}" />
+				</DataGrid.Columns>
+			</DataGrid>
+			<StackPanel Orientation="Horizontal">
+				<Button Content="Add" Command="{Binding AddReceiptCommand}" Margin="5"></Button>
+				<Button Content="Delete" Command="{Binding DeleteReceiptCommand}" Margin="5"></Button>
+				<Button Content="Edit" Margin="5" Click="EditReceiptButton_Click"></Button>
+			</StackPanel>
+			<StackPanel x:Name="spItems">
+				<Label Content="Product Items" />
+				<DataGrid ItemsSource="{Binding ProductItem}" 
+					  AutoGenerateColumns="False" Margin="5"
+					  SelectedItem="{Binding SelectedItem}">
+					<DataGrid.Columns>
+						<DataGridTextColumn Header="Product Name" Binding="{Binding ProductName}" />
+						<DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
+						<DataGridTextColumn Header="Price" Binding="{Binding Price}" />
+						<DataGridTextColumn Header="Price With Tax" Binding="{Binding PriceWithTax}" />
+						<DataGridTextColumn Header="Tax" Binding="{Binding Tax}" />
+						<DataGridTextColumn Header="Amount" Binding="{Binding Amount}" />
+					</DataGrid.Columns>
+				</DataGrid>
+				<StackPanel Orientation="Horizontal">
+					<Button Content="Add" Command="{Binding AddItemCommand}" Margin="5"></Button>
+					<Button Content="Delete" Command="{Binding DeleteItemCommand}" Margin="5"></Button>
+					<Button Content="Edit" Margin="5" Click="EditItemButton_Click" />
+				</StackPanel>
+			</StackPanel>
+			<Button Content="Save" Command="{Binding SaveCommand}" Margin="10"></Button>
+		</StackPanel>
+	</Grid>
+</Window>
